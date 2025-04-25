@@ -3,22 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Invertidor de texto</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
   <h2>EJERCIO 2</h2>
   <label>Ingrese el texto que desea invertir: </label><br>
   <input type="text" id="textoEntrada">
   <button onclick="invertirTexto()">Invertir</button>
-  
-  <div id="resultado"></div>
-  
-  <script >
-    function invertirTexto() {
-      let textoEntrada = document.getElementById("textoEntrada").value;
-      let textoAlReves = texto.split("").reverse().join("");
-      document.getElementById("resultado").textContent = textoAlReves;
-    }            
-  </script>
-
+  <div id="resultado"></div> 
+  <script src="script.js"></script>
 </body>
 </html>
