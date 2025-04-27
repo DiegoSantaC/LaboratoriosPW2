@@ -1,8 +1,12 @@
 document.getElementById("formularioValores").addEventListener("submit", function(event) {
   event.preventDefault();
+  crearTabla();
+  crearBotonSumar();
+});
 
+function crearTabla() {
   const cantidad = parseInt(document.getElementById("cantidad").value);
-  const tablaContenedor = document.getElementById("tablaContenedor");
+  let tablaContenedor = document.getElementById("tablaContenedor");
   tablaContenedor.innerHTML = ""; // Limpia el contenido anterior
   document.getElementById("resultado").textContent = ""; // Limpia el resultado anterior
 
@@ -11,8 +15,8 @@ document.getElementById("formularioValores").addEventListener("submit", function
     return;
   }
 
-  const tabla = document.createElement("table");
-  const fila = document.createElement("tr");
+  let tabla = document.createElement("table");  
+  let fila = document.createElement("tr");
 
   for (let i = 0; i < cantidad; i++) {
     const celda = document.createElement("td");
@@ -23,17 +27,19 @@ document.getElementById("formularioValores").addEventListener("submit", function
 
   tabla.appendChild(fila);
   tablaContenedor.appendChild(tabla);
+}
 
-  // Crear boton de suma
-  const botonSumar = document.createElement("button");
+function crearBotonSumar() {
+  let tablaContenedor = document.getElementById("tablaContenedor");
+  let botonSumar = document.createElement("button");
   botonSumar.textContent = "Calcular suma";
   botonSumar.onclick = calcularSuma;
   tablaContenedor.appendChild(botonSumar);
-});
+}
 
 function calcularSuma() {
-  const celdas = document.querySelectorAll("table td");
-  let suma = 0;
+  let celdas = document.querySelectorAll("table td");
+  let suma =0;
   for (let i = 0; i < celdas.length; i++) {
     suma += parseInt(celdas[i].textContent);
   }
