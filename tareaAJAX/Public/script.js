@@ -26,42 +26,44 @@ function dibujarGrafico() {
   const region1 = document.getElementById('region1').value;
   const region2 = document.getElementById('region2').value;
 
-  if (!region1 || !region2 || region1 === region2) {
-    alert("Selecciona dos regiones diferentes.");
+  if (!region1 || !region2) {
+    alert("Selecciona ambas regiones.");
     return;
   }
 
   const datosRegion1 = datos.find(item => item.region === region1);
   const datosRegion2 = datos.find(item => item.region === region2);
 
-  if (!datosRegion1 || !datosRegion2) {
-    alert("No se encontraron datos para una o ambas regiones.");
+  if (!datosRegion1 || !Array.isArray(datosRegion1.confirmed) ||
+      !datosRegion2 || !Array.isArray(datosRegion2.confirmed)) {
+    alert("No se encontraron datos confirmados para una de las regiones.");
     return;
   }
 
-  // Tomar el último valor de la lista confirmed
   const lista1 = datosRegion1.confirmed;
   const lista2 = datosRegion2.confirmed;
 
-  const total1 = parseInt(lista1[lista1.length - 1].value) || 0;
-  const total2 = parseInt(lista2[lista2.length - 1].value) || 0;
+  const dataTable = [['Fecha', region1, region2]];
 
-  const data = google.visualization.arrayToDataTable([
-    ['Región', 'Casos confirmados'],
-    [region1, total1],
-    [region2, total2]
-  ]);
+  for (let i = 0; i < lista1.length; i++) {
+    const fecha = lista1[i].date;
+    const valor1 = parseInt(lista1[i].value) || 0;
+    const valor2 = parseInt(lista2[i].value) || 0;
+    dataTable.push([fecha, valor1, valor2]);
+  }
+
+  const data = google.visualization.arrayToDataTable(dataTable);
 
   const options = {
-    title: `Comparación de casos confirmados`,
-    pieHole: 0.4,
-    slices: {
-      0: { color: '#1e88e5' },
-      1: { color: '#e53935' }
-    }
+    title: `Comparación de casos confirmados (${region1} vs ${region2}) - Últimos 30 días`,
+    hAxis: { title: 'Fecha' },
+    vAxis: { title: 'Casos confirmados' },
+    legend: { position: 'bottom' },
+    colors: ['#1e88e5', '#e53935'],
+    curveType: 'function'
   };
 
-  const chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  const chart = new google.visualization.LineChart(document.getElementById('chart_div'));
   chart.draw(data, options);
 }
 
