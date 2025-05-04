@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Comparación por regiones</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
   <body>
-    <h1>Comparación entre regiones</h1>
-    
-    <label for="region1">Región 1:</label>
-    <select id="region1"></select>
+    <h1>Comparación de crecimiento de casos confirmados en todas las regiones</h1>
+    <h2>(Excepto Lima y Callao)</h2>
 
-    <label for="region2">Región 2:</label>
-    <select id="region2"></select>
+    <button onclick="dibujarGrafico()">Mostrar Comparación</button>
 
-    <button onclick="dibujarGrafico()">Comparar</button>
-
-    <div style="display: flex; gap: 40px;">
-      <div id="grafico_circular" style="width: 40%; height: 500px;"></div>
-      <div id="chart_div" style="width: 60%; height: 500px;"></div>
-    </div>
+    <div id="chart_div" style="width: 100%; height: 600px; margin-top: 30px;"></div>
 
     <script src="script.js"></script>
   </body>
