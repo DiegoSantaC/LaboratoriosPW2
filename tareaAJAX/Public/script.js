@@ -40,6 +40,17 @@ function dibujarGrafico() {
     return;
   }
 
+  if (region1 === region2) {
+    alert("No puedes comparar una región consigo misma.");
+    return;
+  }
+
+  if ((region1 === "Lima" && region2 === "Callao") || 
+    (region1 === "Callao" && region2 === "Lima")) {
+  alert("No se puede comparar Lima y Callao entre sí. Por favor elige otra combinación.");
+  return;
+}
+
   const lista1 = datosRegion1.confirmed;
   const lista2 = datosRegion2.confirmed;
 
