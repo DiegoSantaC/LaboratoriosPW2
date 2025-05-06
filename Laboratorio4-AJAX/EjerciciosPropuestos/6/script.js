@@ -12,7 +12,6 @@ function cargarGrafica() {
         return response.json(); 
       })
       .then(function(data) {
-        //Filtra los datos de Lima y Callao
         datos = data.filter(item => item.region !== "Lima" && item.region !== "Callao");
         crearGrafica(datos);
 
@@ -23,34 +22,45 @@ function cargarGrafica() {
   }
 
   function crearGrafica(regiones) {
-    // Suponemos que todas las regiones tienen las mismas fechas
-  const fechas = regiones[0].confirmed.map(item => item.date);
+    const contenedor = document.getElementById('graficaComparativa');
+    contenedor.innerHTML = '';
 
-  // Cabecera: Fecha, Región1, Región2, ...
-  const grafica = [['Fecha', ...regiones.map(r => r.region)]];
+    regiones.forEach(function(region, index){
+        const datosRegion = [['Fecha', 'Crecimiento']];
+        
+        for (let i = 1; i < region.confirmed.length; i++) {
+            const hoy = Number(region.confirmed[i]?.value) || 0;
+            const ayer = Number(region.confirmed[i - 1]?.value) || 0;
+            const crecimiento = Math.max(0, hoy - ayer);
+            datosRegion.push([region.confirmed[i].date, crecimiento]);
+        }
 
-  // Para cada día (desde el segundo en adelante), calcular crecimiento diario
-  for (let i = 1; i < fechas.length; i++) {
-    const fila = [fechas[i]];
-    regiones.forEach(region => {
-      const valorHoy = Number(region.confirmed[i]?.value) || 0;
-      const valorAyer = Number(region.confirmed[i - 1]?.value) || 0;
-      const crecimiento = Math.max(0, valorHoy - valorAyer);  // <-- cambio aquí
-      fila.push(crecimiento);
+        const data = google.visualization.arrayToDataTable(datosRegion);
+
+        const div = document.createElement('div');
+        div.id = 'grafica_' + index;
+        div.style.width = '300px';
+        div.style.height = '200px';
+        div.style.margin = '10px';
+        div.style.display = 'inline-block';
+        div.style.verticalAlign = 'top';
+        div.style.border = '1px solid #ccc';
+        div.style.padding = '5px';
+        contenedor.appendChild(div);
+
+        const options = {
+            title: region.region,
+            legend: 'none',
+            hAxis: {
+                textPosition: 'none'
+            },
+            vAxis: {
+                minValue: 0
+            },
+            chartArea: { width: '80%', height: '70%' }
+        };
+
+        const chart = new google.visualization.LineChart(div);
+        chart.draw(data, options);
     });
-    grafica.push(fila);
-  }
-
-  const data = google.visualization.arrayToDataTable(grafica);
-
-  const options = {
-    title: 'Crecimiento diario de casos confirmados por región (excepto Lima y Callao)',
-    hAxis: { title: 'Fecha' },
-    vAxis: { title: 'Crecimiento de casos confirmados' },
-    legend: { position: 'bottom' },
-    curveType: 'function'
-  };
-
-  const chart = new google.visualization.LineChart(document.getElementById('graficaComparativa'));
-  chart.draw(data, options);
   }
