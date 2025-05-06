@@ -28,17 +28,6 @@ function cargarGrafica() {
   
     // Construir cabecera de la tabla de datos: fecha + cada región
     const grafica = [['Fecha', ...regiones.map(r => r.region)]];
-
-    for (let i = 0; i < fechas.length; i++) {
-      const fila = [fechas[i]];
-      regiones.forEach(function(region){
-        const valor = Number(region.confirmed[i]?.value) || 0;
-        fila.push(valor);
-      });
-      grafica.push(fila);
-    }
-  
-    const data = google.visualization.arrayToDataTable(grafica);
   
     const options = {
       title: 'Crecimiento de casos confirmados por región (excepto Lima y Callao)',
