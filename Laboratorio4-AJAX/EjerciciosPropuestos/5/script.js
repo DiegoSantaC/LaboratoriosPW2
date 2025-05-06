@@ -1,30 +1,20 @@
-
 google.charts.load('current', { packages: ['corechart'] });
 let datos = [];
 
 function mostrarGrafica(){
-    google.charts.setOnLoadCallback(cargarTabla);
+    google.charts.setOnLoadCallback(cargarGrafica);
 }
 
-function cargarTabla() {
+function cargarGrafica() {
     fetch('../data.json')
       .then(function(response) {
         return response.json(); 
       })
       .then(function(data) {
-        datos = data; 
+        //Filtra los datos de Lima y Callao
+        datos = data.filter(item => item.region !== "Lima" && item.region !== "Callao");
+        crearGrafica(datos);
 
-        // Agregamos una variable para el total de confirmados y tomamos el ultimo valor de
-        // Confirmed para dar el total de confirmados y lo retornamos como un atributo mas
-        let listaRegiones = datos.map(function(item) {
-        let totalConfirmados = Number(item.confirmed[item.confirmed.length - 1]?.value || 0);
-            return {
-              region: item.region,
-              confirmados: totalConfirmados
-            };
-          });
-
-        crearGrafica(listaRegiones);
       })
       .catch(function(error) {
         console.error('Error al cargar JSON:', error);
@@ -32,26 +22,31 @@ function cargarTabla() {
   }
 
   function crearGrafica(regiones) {
-    let dataLista = [['Region', 'Confirmados']];
-    
-    regiones.forEach(function(item) {
-        dataLista.push([item.region, item.confirmados]);  // X = Region , Y = confirmados
-    });
+    // Suponemos que todas las regiones tienen las mismas fechas
+    const fechas = regiones[0].confirmed.map(item => item.date);
+  
+    // Construir cabecera de la tabla de datos: fecha + cada región
+    const grafica = [['Fecha', ...regiones.map(r => r.region)]];
 
-    let data = google.visualization.arrayToDataTable(dataLista);
-
-    let options = {
-        title: 'Confirmados Totales por Región (Gráfico de Puntos)',
-        hAxis: {
-            title: 'Regiones (Eje X)'
-        },
-        vAxis: {
-            title: 'Casos Confirmados Totales(EjeY)'
-        },
-        legend: 'none',
-        pointSize: 10,
+    for (let i = 0; i < fechas.length; i++) {
+      const fila = [fechas[i]];
+      regiones.forEach(function(region){
+        const valor = Number(region.confirmed[i]?.value) || 0;
+        fila.push(valor);
+      });
+      grafica.push(fila);
+    }
+  
+    const data = google.visualization.arrayToDataTable(grafica);
+  
+    const options = {
+      title: 'Crecimiento de casos confirmados por región (excepto Lima y Callao)',
+      hAxis: { title: 'Fecha' },
+      vAxis: { title: 'Casos confirmados' },
+      legend: { position: 'bottom' },
+      curveType: 'function'
     };
-
-    let chart = new google.visualization.ScatterChart(document.getElementById('graficaComparativa'));
+  
+    const chart = new google.visualization.LineChart(document.getElementById('graficaComparativa'));
     chart.draw(data, options);
-}
+  }
