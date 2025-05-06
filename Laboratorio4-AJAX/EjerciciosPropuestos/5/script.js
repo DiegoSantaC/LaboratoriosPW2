@@ -1,69 +1,57 @@
-google.charts.load('current', { packages: ['corechart'] });
-google.charts.setOnLoadCallback(inicializar);
 
+google.charts.load('current', { packages: ['corechart'] });
 let datos = [];
 
-function inicializar() {
-  fetch('../data.json')
-    .then(res => res.json())
-    .then(data => {
-      datos = data;
-      llenarSelectRegiones();
-    })
-    .catch(err => console.error('Error cargando JSON:', err));
+function mostrarGrafica(){
+    google.charts.setOnLoadCallback(cargarTabla);
 }
 
-function llenarSelectRegiones() {
-  const select = document.getElementById('selectRegiones');
-  const regiones = datos.map(d => d.region);
-  const unicas = [...new Set(regiones)];
+function cargarTabla() {
+    fetch('../data.json')
+      .then(function(response) {
+        return response.json(); 
+      })
+      .then(function(data) {
+        datos = data; 
 
-  unicas.forEach(region => {
-    const opt = document.createElement('option');
-    opt.value = region;
-    opt.textContent = region;
-    select.appendChild(opt);
-  });
-}
+        // Agregamos una variable para el total de confirmados y tomamos el ultimo valor de
+        // Confirmed para dar el total de confirmados y lo retornamos como un atributo mas
+        let listaRegiones = datos.map(function(item) {
+        let totalConfirmados = Number(item.confirmed[item.confirmed.length - 1]?.value || 0);
+            return {
+              region: item.region,
+              confirmados: totalConfirmados
+            };
+          });
 
-function mostrarComparacion() {
-  const seleccionadas = Array.from(document.getElementById('selectRegiones').selectedOptions)
-    .map(opt => opt.value);
-
-  if (seleccionadas.length === 0) {
-    alert('Selecciona al menos una región');
-    return;
+        crearGrafica(listaRegiones);
+      })
+      .catch(function(error) {
+        console.error('Error al cargar JSON:', error);
+      });
   }
 
-  // Extraer fechas base
-  const fechas = datos.find(r => r.region === seleccionadas[0])?.confirmed.map(e => e.date);
-
-  // Inicializar tabla con fechas
-  const tabla = [['Fecha', ...seleccionadas]];
-
-  for (let i = 0; i < fechas.length; i++) {
-    const fila = [fechas[i]];
-
-    seleccionadas.forEach(region => {
-      const regionData = datos.find(r => r.region === region);
-      const valor = parseInt(regionData?.confirmed[i]?.value) || 0;
-      fila.push(valor);
+  function crearGrafica(regiones) {
+    let dataLista = [['Region', 'Confirmados']];
+    
+    regiones.forEach(function(item) {
+        dataLista.push([item.region, item.confirmados]);  // X = Region , Y = confirmados
     });
 
-    tabla.push(fila);
-  }
+    let data = google.visualization.arrayToDataTable(dataLista);
 
-  const data = google.visualization.arrayToDataTable(tabla);
+    let options = {
+        title: 'Confirmados Totales por Región (Gráfico de Puntos)',
+        hAxis: {
+            title: 'Regiones (Eje X)'
+        },
+        vAxis: {
+            title: 'Casos Confirmados Totales(EjeY)'
+        },
+        legend: 'none',
+        pointSize: 10,
+    };
 
-  const options = {
-    title: 'Comparación de regiones por casos confirmados',
-    hAxis: { title: 'Fecha' },
-    vAxis: { title: 'Casos confirmados' },
-    curveType: 'function',
-    legend: { position: 'bottom' },
-    colors: ['#e44d26', '#1e88e5', '#43a047', '#fbc02d', '#8e24aa']
-  };
-
-  const chart = new google.visualization.LineChart(document.getElementById('graficoComparativo'));
-  chart.draw(data, options);
+    let chart = new google.visualization.ScatterChart(document.getElementById('graficaComparativa'));
+    chart.draw(data, options);
 }
