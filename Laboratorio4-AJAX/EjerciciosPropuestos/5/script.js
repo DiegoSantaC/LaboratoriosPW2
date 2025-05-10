@@ -11,7 +11,6 @@ function cargarGrafica() {
         return response.json(); 
       })
       .then(function(data) {
-        //Filtra los datos de Lima y Callao
         datos = data.filter(item => item.region !== "Lima" && item.region !== "Callao");
         crearGrafica(datos);
 
@@ -22,11 +21,9 @@ function cargarGrafica() {
   }
 
   function crearGrafica(regiones) {
-    // Suponemos que todas las regiones tienen las mismas fechas
     const fechas = regiones[0].confirmed.map(item => item.date);
   
-    // Construir cabecera de la tabla de datos: fecha + cada región
-    const grafica = [['Fecha', ...regiones.map(r => r.region)]];
+    const grafica = [['Fecha', ...regiones.map(item => item.region)]];
 
     for (let i = 0; i < fechas.length; i++) {
       const fila = [fechas[i]];

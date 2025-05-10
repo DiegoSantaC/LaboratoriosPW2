@@ -12,7 +12,7 @@ function cargarGrafica() {
         return response.json(); 
       })
       .then(function(data) {
-        datos = data; 
+        datos = data;
 
         // Obtener el objeto completo de la región Arequipa
         let Arequipa = datos.find(item => item.region === "Arequipa");

@@ -9,7 +9,7 @@ function mostrarRegiones(){
 function cargarRegiones() {
     fetch('../data.json')
       .then(function(response) {
-        return response.json(); // Convertir la respuesta en JSON
+        return response.json(); 
       })
       .then(function(data) {
         datos = data; 
@@ -29,8 +29,8 @@ function cargarRegiones() {
     let dataTable = new google.visualization.DataTable();
     dataTable.addColumn('string', 'Región');
   
-    regiones.forEach(function(a) {
-      dataTable.addRow([a]);
+    regiones.forEach(function(region) {
+      dataTable.addRow([region]);
     });
   
     let table = new google.visualization.Table(document.getElementById('tablaRegiones'));
