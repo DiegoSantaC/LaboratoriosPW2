@@ -1,13 +1,11 @@
 from colors import *
 class Picture:
-  def __init__(self, img):
-    self.img = img;
-  
   def __init__(self, img, colorInterno=None, colorExterno=None):
     self.img = img
 
-    if colorInterno and colorExterno:
+    if colorInterno:
         self.img = self.reemplazar('.', colorInterno).img
+    if colorExterno:
         self.img = self.reemplazar('#', colorExterno).img
 
   def __eq__(self, other):
@@ -33,10 +31,11 @@ class Picture:
     """ Devuelve un negativo de la imagen """
     return Picture(None)
 
-  def join(self, p):
-    """ Devuelve una nueva figura poniendo la figura del argumento 
-        al lado derecho de la figura actual """
-    return Picture(None)
+  def join(self, otra_figura):
+    nueva_img = []
+    for fila1, fila2 in zip(self.img, otra_figura.img):
+        nueva_img.append(fila1 + fila2)
+    return Picture(nueva_img)
 
   def up(self, p):
     return Picture(None)

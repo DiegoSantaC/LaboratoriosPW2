@@ -4,7 +4,10 @@ from chessPictures import *
 
 print("AAAAAAAAA")
 
-draw(king)
+nuevaFigura=king.join(kingWhite)
+draw(nuevaFigura)
+
+
 
 
 
