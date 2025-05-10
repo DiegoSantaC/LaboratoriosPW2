@@ -2,6 +2,13 @@ from colors import *
 class Picture:
   def __init__(self, img):
     self.img = img;
+  
+  def __init__(self, img, colorInterno=None, colorExterno=None):
+    self.img = img
+
+    if colorInterno and colorExterno:
+        self.img = self.reemplazar('.', colorInterno).img
+        self.img = self.reemplazar('#', colorExterno).img
 
   def __eq__(self, other):
     return self.img == other.img
@@ -52,4 +59,17 @@ class Picture:
     """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
     o antihorario"""
     return Picture(None)
+  
+  def reemplazar(self, colorViejo, colorNuevo):
+    """Devuelve una nueva imagen donde se cambia el colorViejo por un colorNuevo"""
+    nueva_imagen = []
+    for fila in self.img:
+        nueva_fila = []
+        for c in fila:
+            if c == colorViejo:
+                nueva_fila.append(colorNuevo)
+            else:
+                nueva_fila.append(c)
+        nueva_imagen.append(nueva_fila)
+    return Picture(nueva_imagen)
 

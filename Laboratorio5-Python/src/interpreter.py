@@ -2,6 +2,7 @@ import pygame, sys
 from pygame.locals import *
 from colors import *
 
+
 def parseLine(DISPLAY, y, s):
   x = 0
   for c in s:
