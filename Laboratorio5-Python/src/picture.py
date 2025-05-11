@@ -37,8 +37,10 @@ class Picture:
         nueva_img.append(fila1 + fila2)
     return Picture(nueva_img)
 
-  def up(self, p):
-    return Picture(None)
+  def up(self, otra_figura):
+    """Devuelve una nueva figura poniendo la figura 'otra_figura' debajo de la actual"""
+    nueva_img = self.img + otra_figura.img
+    return Picture(nueva_img)
 
   def under(self, p):
     """ Devuelve una nueva figura poniendo la figura p sobre la
