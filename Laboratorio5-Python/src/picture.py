@@ -32,17 +32,15 @@ class Picture:
     for fila in self.img:
         nueva_fila = []
         for c in fila:
-            nuevo = inverter.get(c, c)  # Usa el inverso si existe, si no deja igual
+            nuevo = inverter.get(c, c) 
             nueva_fila.append(nuevo)
-        nueva_img.append(''.join(nueva_fila))  # Une los caracteres en una cadena
+        nueva_img.append(''.join(nueva_fila))  
     return Picture(nueva_img)
 
   def join(self, otra_figura):
 
     nueva_img = []
     for fila1, fila2 in zip(self.img, otra_figura.img):
-        print(f"fila1: {fila1}")  # Esto imprimirá cada fila
-        print(f"fila2: {fila2}")  # Esto imprimirá cada fila
         nueva_img.append(fila1 + fila2)
     return Picture(nueva_img)
 
