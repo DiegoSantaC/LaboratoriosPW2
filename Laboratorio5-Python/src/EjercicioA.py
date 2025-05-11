@@ -4,9 +4,10 @@ from chessPictures import *
 
 print("AAAAAAAAA")
 
-Fila1=knightBlack.join(kinghtWhite)
-Fila2=kinghtWhite.join(knightBlack)
+Fila1=kinghtWhite.join(knightBlack)
+Fila2=knightBlack.join(kinghtWhite)
 nuevaFigura=Fila1.up(Fila2)
+
 draw(nuevaFigura)
 
 
