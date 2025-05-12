@@ -1,30 +1,19 @@
 from interpreter import draw
 from chessPictures import *
 
+
 print("AAAAAAAAA")
-Tablero=[]
-for i in range(4) :
-    Fila=[]
-    for j in range(8) :
-        if (i+j)%2==0 : 
-            print(i+j)
-            Fila.append(squareWhite)
-        else :
-            print(i+j)
-            Fila.append(squareBlack)
-    Tablero.append(Fila)
+Fila=[]
+for i in range(8) :
+    if i%2==0 :
+        Fila.append(squareWhite)
+    else :
+        Fila.append(squareBlack)
 
+figura = Fila[0]
 
-columnasFilas = []
 # Ir uniendo las demás
-for fila in Tablero :
-    filaUnida= fila[0]
-    for casilla in fila[1:]:
-        filaUnida= filaUnida.join(casilla)
-    columnasFilas.append(filaUnida)
+for casilla in Fila[1:]:
+    figura = figura.join(casilla)
 
-figura=columnasFilas[0]
-for fila in columnasFilas[1:] :
-    figura=figura.up(fila)
-
-draw(figura)
+draw(figura.negative())

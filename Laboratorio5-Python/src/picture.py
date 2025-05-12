@@ -45,7 +45,7 @@ class Picture:
     return Picture(nueva_img)
 
   def up(self, otra_figura):
-    """Devuelve una nueva figura poniendo la figura 'otra_figura' debajo de la actual"""
+    """Devuelve una nueva figura poniendo la figura 'otra_figura' abajo de la actual"""
     nueva_img = self.img + otra_figura.img
     return Picture(nueva_img)
 
