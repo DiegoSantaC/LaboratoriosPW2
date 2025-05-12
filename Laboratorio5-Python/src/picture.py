@@ -48,11 +48,20 @@ class Picture:
     """Devuelve una nueva figura poniendo la figura 'otra_figura' abajo de la actual"""
     nueva_img = self.img + otra_figura.img
     return Picture(nueva_img)
-
-  def under(self, p):
-    """ Devuelve una nueva figura poniendo la figura p sobre la
+  
+  """ Devuelve una nueva figura poniendo la figura p sobre la
         figura actual """
-    return Picture(None)
+  def under(self, p):
+    nueva_img = []
+    for fila_self, fila_p in zip(self.img, p.img):
+        nueva_fila = []
+        for c_p, c_self in zip(fila_p, fila_self):
+            if c_p == ' ':  # Espacio = transparente
+                nueva_fila.append(c_self)  # Se deja la casilla
+            else:
+                nueva_fila.append(c_p)  # Se pone el carácter de la pieza
+        nueva_img.append(''.join(nueva_fila))
+    return Picture(nueva_img)
   
   def horizontalRepeat(self, n):
     resultado = self
