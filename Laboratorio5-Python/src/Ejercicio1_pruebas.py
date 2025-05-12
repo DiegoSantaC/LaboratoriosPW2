@@ -4,6 +4,6 @@ from chessPictures import *
 
 print("AAAAAAAAA")
 
-Fila=queenWhite.horizontalRepeat(4)
+Columna=knightWhite.verticalRepeat(4)
 
-draw(Fila)
+draw(Columna)

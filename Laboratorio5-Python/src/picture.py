@@ -56,10 +56,10 @@ class Picture:
     for fila_self, fila_p in zip(self.img, p.img):
         nueva_fila = []
         for c_p, c_self in zip(fila_p, fila_self):
-            if c_p == ' ':  # Espacio = transparente
-                nueva_fila.append(c_self)  # Se deja la casilla
+            if c_p == ' ':  
+                nueva_fila.append(c_self)  
             else:
-                nueva_fila.append(c_p)  # Se pone el carácter de la pieza
+                nueva_fila.append(c_p)  
         nueva_img.append(''.join(nueva_fila))
     return Picture(nueva_img)
   
@@ -70,7 +70,10 @@ class Picture:
     return resultado
 
   def verticalRepeat(self, n):
-    return Picture(None)
+    resultado = self
+    for i in range(n-1):
+        resultado = resultado.up(self)
+    return resultado
 
   #Extra: Sólo para realmente viciosos 
   def rotate(self):
