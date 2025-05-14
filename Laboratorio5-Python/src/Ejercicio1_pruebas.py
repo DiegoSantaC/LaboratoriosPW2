@@ -16,4 +16,4 @@ Columna2=Columna2.up(queenWhite.negative())
 Columna3=Columna1.join(Columna2)
 
 
-draw(Columna3)
+draw(Columna3.rotate())

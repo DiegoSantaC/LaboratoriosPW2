@@ -28,6 +28,7 @@ class Picture:
     return Picture(self.img[::-1])
 
   def negative(self):
+    """ Devuelve la figura con su color inverso"""
     nueva_img = []
     for fila in self.img:
         nueva_fila = []
@@ -38,7 +39,7 @@ class Picture:
     return Picture(nueva_img)
 
   def join(self, otra_figura):
-
+    """ Une una figura con otra de manera horizontal """
     nueva_img = []
     for fila1, fila2 in zip(self.img, otra_figura.img):
         nueva_img.append(fila1 + fila2)
