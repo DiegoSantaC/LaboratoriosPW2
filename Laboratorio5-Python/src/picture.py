@@ -79,8 +79,10 @@ class Picture:
   def rotate(self):
     """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
     o antihorario"""
-    return Picture(None)
+    rotada = [''.join(fila) for fila in zip(*self.img[::-1])]
+    return Picture(rotada)
   
+  #Adicional
   def reemplazar(self, colorViejo, colorNuevo):
     """Devuelve una nueva imagen donde se cambia el colorViejo por un colorNuevo"""
     nueva_imagen = []
