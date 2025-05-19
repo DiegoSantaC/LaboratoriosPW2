@@ -2,11 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Películas IMDB</title>
+    <title>Películas</title>
 </head>
 <body>
-    <h1>Top 10 de Películas</h1>
-    <button onclick="mostrarPeliculas()">Mostrar Peliculas</button>
+    <h1>Películas</h1>
+
+    <form id="formulario">
+        <input type="text" id="titulo" placeholder="Título" required>
+        <input type="number" id="anio" placeholder="Año" required>
+        <button type="submit">Agregar</button>
+    </form>
+
     <ul id="lista"></ul>
 
     <script src="script.js"></script>
