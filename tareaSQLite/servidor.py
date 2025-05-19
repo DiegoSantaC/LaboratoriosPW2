@@ -43,5 +43,4 @@ def eliminar_pelicula(id):
     return jsonify({"mensaje": "Película eliminada"})
 
 if __name__ == "__main__":
-    inicializar_bd()
     app.run(debug=True, host="localhost", port=3000)

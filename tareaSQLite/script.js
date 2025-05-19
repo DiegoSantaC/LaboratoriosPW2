@@ -3,7 +3,6 @@ function cargarPeliculas() {
         .then(res => res.json())
         .then(data => {
             const lista = document.getElementById("lista");
-            lista.innerHTML = "";
             data.forEach(p => {
                 const li = document.createElement("li");
                 li.textContent = `${p.titulo} (${p.anio}) `;
