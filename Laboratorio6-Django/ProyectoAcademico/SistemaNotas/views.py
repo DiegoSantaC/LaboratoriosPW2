@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
-def miHomeView(*args, **kwargs) :
-    return HttpResponse('<h1> Bienvenido a mi Gestor Academico en Django</h1>')
+def miHomeView(request, *args, **kwargs) :
+    print(args, kwargs)
+    print(request.user)
+    return render(request,"home.html",{})
 
-def otroView(*args, **kwargs) :
+def otroView(request) :
     return HttpResponse('<h1> Otra pagina</h1>')
