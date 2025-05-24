@@ -7,7 +7,7 @@ class Alumno(models.Model):
     apellidos = models.CharField(max_length=200)
  
     def __str__(self):
-    	return f"Alumno:  {self.nombres } {self.apellidos} {self.CUI}"
+    	return f"{self.nombres } {self.apellidos} {self.CUI}"
  
 class Curso(models.Model):
     codigo = models.CharField(max_length=100, unique=True)
