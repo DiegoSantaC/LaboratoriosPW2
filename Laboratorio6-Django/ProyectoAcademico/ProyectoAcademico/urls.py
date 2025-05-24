@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from SistemaNotas.views import miHomeView, otroView
+from SistemaNotas import views
 
 urlpatterns = [
-    path('', miHomeView, name='Pagina Inicio'),
-    path('otro/', otroView),
+    path('', views.miHomeView, name='PaginaInicio'),
+    path('alumno/registrar/', views.registrar_alumno, name='registrar_alumno'),
+    path('curso/registrar/', views.registrar_curso, name='registrar_curso'),
+    path('nota/registrar/', views.registrar_nota, name='registrar_nota'),
+    path('otro/', views.otroView),
     path('admin/', admin.site.urls),
 ]
