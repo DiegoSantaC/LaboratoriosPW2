@@ -1,8 +1,14 @@
 {% extends "template.html" %}
 
+{% block imagen %}
+    <img src="/static/imagenes/imagen1.png" height="100px">
+{% endblock %}
+
 {% block content %}
     <h1>Bienvenido a mi Gestor Academico</h1>
     <h2>Con Bloques de Templates</h2>
     {{ request.user }}
     {{ request.user.is_authenticated }}  
 {% endblock %}
+
+
