@@ -24,4 +24,4 @@ class NotasAlumnosPorCurso(models.Model):
 
  
     def __str__(self):
-        return f"Nota: {self.nota}  Alumno: {self.alumno.CUI} , Curso: {self.curso.codigo}"
+        return f"Nota: {self.nota} , Alumno: {self.alumno.CUI} , Curso: {self.curso.codigo}"
