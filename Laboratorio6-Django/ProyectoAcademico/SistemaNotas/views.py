@@ -5,7 +5,7 @@ from django.http import HttpResponse
 def miHomeView(request, *args, **kwargs) :
     print(args, kwargs)
     print(request.user)
-    return render(request,"home.html",{})
+    return render(request,"base1.html",{})
 
 def otroView(request) :
     return HttpResponse('<h1> Otra pagina</h1>')
