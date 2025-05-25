@@ -18,4 +18,5 @@ python manage.py migrate: actualizar los cambios hechos en el proyecto, algo asi
 
 django-admin startapp personas : Creando nuestra aplicación personas, aca crearemos y configuraremos nuestras tablas.
 
+python manage.py createsuperuser : Crear un usuario para moder ingresar en admin
 
