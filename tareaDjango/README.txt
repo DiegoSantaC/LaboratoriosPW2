@@ -20,3 +20,5 @@ django-admin startapp personas : Creando nuestra aplicación personas, aca crear
 
 python manage.py createsuperuser : Crear un usuario para moder ingresar en admin
 
+Python manage.py Shell: Consola dinámica 
+
