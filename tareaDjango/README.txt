@@ -12,6 +12,8 @@ django-admin startproject listaContactos : Creando nuestro proyecto django llama
 
 python manage.py runserver: Para iniciar nuestro servidor python
 
+python manage.py makemigrations: ver los posibles cambios y errores que nos generada hacer migrate(pre commit)
+
 python manage.py migrate: actualizar los cambios hechos en el proyecto, algo asi como un commit
 
 django-admin startapp personas : Creando nuestra aplicación personas, aca crearemos y configuraremos nuestras tablas.
