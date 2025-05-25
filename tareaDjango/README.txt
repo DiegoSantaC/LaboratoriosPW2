@@ -10,6 +10,10 @@ pip freeze: Para verificar que esta instalado
 
 django-admin startproject listaContactos : Creando nuestro proyecto django llamado listaContacto
 
-Python manage.py runserver: Para iniciar nuestro servidor python
+python manage.py runserver: Para iniciar nuestro servidor python
+
+python manage.py migrate: actualizar los cambios hechos en el proyecto, algo asi como un commit
+
+django-admin startapp personas : Creando nuestra aplicación personas, aca crearemos y configuraremos nuestras tablas.
 
 
