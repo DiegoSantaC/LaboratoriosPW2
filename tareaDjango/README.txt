@@ -8,4 +8,6 @@ pip install Django: Instala la biblioteca django en nuestro entorno virtual
 
 pip freeze: Para verificar que esta instalado
 
+django-admin startproject listaContactos : Creando nuestro proyecto django llamado listaContacto
+
 
