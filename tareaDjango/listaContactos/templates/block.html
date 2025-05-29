@@ -9,7 +9,14 @@
     </p>
     <ul>
         {% for myItem in myList %}
-        <li>{{forloop.counter}} - {{ myItem }}</li>
+        <li>
+            {{forloop.counter}} - {{ myItem }}
+            {% if myItem == 33 %}
+                - Este es mi numero de la suerte
+            {% elif myItem > 60 %}
+                - Este numero es mayor a 60
+            {% endif %} 
+        </li>
         {% endfor %}
         {% for myItem in myList %}
         <li>{{forloop.revcounter0}} - {{ myItem }}</li>
