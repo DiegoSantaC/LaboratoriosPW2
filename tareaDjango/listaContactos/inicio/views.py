@@ -5,7 +5,11 @@ from django.http import HttpResponse
 def myHomeView(request,*args,**kwargs):
     print(args,kwargs)
     print(request.user)
-    return render(request,"block.html",{})
+    myContext = {
+        'myText': 'Esto es sobre nosotros',
+        'myNumber': 123,
+    }
+    return render(request,"block.html",myContext)
 
 def anotherView(request):
     return HttpResponse("<h2>Solo otra pagina más</h2>")
