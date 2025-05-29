@@ -21,4 +21,5 @@ from inicio.views import myHomeView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', myHomeView, name="Mi pagina de inicio"),
+    path('another/', myHomeView, name="Mi pagina de inicio"),
 ]
