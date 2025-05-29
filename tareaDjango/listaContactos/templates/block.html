@@ -9,7 +9,10 @@
     </p>
     <ul>
         {% for myItem in myList %}
-        <li>{{ myItem }}</li>
+        <li>{{forloop.counter}} - {{ myItem }}</li>
+        {% endfor %}
+        {% for myItem in myList %}
+        <li>{{forloop.revcounter0}} - {{ myItem }}</li>
         {% endfor %}
     </ul>
 {% endblock %}    
