@@ -2,7 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Persona(models.Model):
-    nombres = models.TextField()
-    apellidos = models.TextField()
-    edad = models.TextField()
+    nombres = models.CharField(max_length=100)
+    apellidos = models.CharField(max_length=100)
+    edad = models.IntegerField()
     donador= models.BooleanField()
+
+    def __str__(self):
+        return f"{self.nombres} {self.apellidos} ,edad:{self.edad} ,es donador:{self.donador}"
