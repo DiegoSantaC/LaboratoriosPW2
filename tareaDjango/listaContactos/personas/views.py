@@ -7,4 +7,4 @@ def personaTestView(request):
     myContext = {
         'objeto':obj,
     }
-    return render(request,"personas/test.html",myContext)
+    return render(request,"personas/descripcion.html",myContext)
