@@ -6,9 +6,8 @@
     <title>Template Base</title>
 </head>
 <body>
-    <h1>Hola mundo con Django</h1>
-    {{ request.user }}
-    <h2>Con templates</h2>
-    {{ request.user.is_authenticated }}
+    {% block content %}
+        Remplazame
+    {% endblock %}           
 </body>
 </html>
