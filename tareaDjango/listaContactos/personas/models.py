@@ -5,3 +5,4 @@ class Persona(models.Model):
     nombres = models.TextField()
     apellidos = models.TextField()
     edad = models.TextField()
+    donador= models.BooleanField()
