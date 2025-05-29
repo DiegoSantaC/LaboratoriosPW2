@@ -3,10 +3,8 @@ from .models import Persona
 
 # Create your views here.
 def personaTestView(request):
-    obj = Persona.objects.get(id = 3)
+    obj = Persona.objects.get(id = 1)
     myContext = {
-        'nombres': obj.nombres,
-        'apellidos': obj.apellidos,
-        'edad' : obj.edad,
+        'objeto':obj,
     }
     return render(request,"personas/test.html",myContext)
