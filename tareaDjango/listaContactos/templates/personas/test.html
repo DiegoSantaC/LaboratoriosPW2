@@ -1,0 +1,12 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <h1>{{nombres}} {{apellidos}} , edad:{{edad}}</h1>
+    <h2>
+        {% if edad > 40 %}
+            Debe cuidarse del colesterol
+        {% else %}
+            Puedo comer lo que quiera
+        {% endif %}
+    </h2>
+{% endblock %}
