@@ -1,0 +1,27 @@
+{% extends 'home.html' %}
+{% block content %}
+    <h3>Usando extends y bloques</h3>
+    {{ request.user }}<br>
+    {{ request.user.is_authenticated }}
+    <p> <h3>Usando contexto en Django:</h3>
+        {{myText|upper|truncatechars:"15"}}<br> 
+        {{myNumber}}
+    </p>
+    <ul>
+        {% for myItem in myList %}
+        <li>
+            {{forloop.counter}} - {{ myItem|add:2 }}
+            {% if myItem == 33 %}
+                - Este es mi numero de la suerte
+            {% elif myItem|divisibleby:2 %}
+                - mi numero es par    
+            {% elif myItem > 60 %}
+                - Este numero es mayor a 60
+            {% endif %} 
+        </li>
+        {% endfor %}
+        {% for myItem in myList %}
+        <li>{{forloop.revcounter0}} - {{ myItem }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}    
