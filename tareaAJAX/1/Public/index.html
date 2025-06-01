@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparación por regiones</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+  <body>
+    <h1>Comparación entre regiones</h1>
+    
+    <label for="region1">Región 1:</label>
+    <select id="region1"></select>
+
+    <label for="region2">Región 2:</label>
+    <select id="region2"></select>
+
+    <button onclick="dibujarGrafico()">Comparar</button>
+
+    <div style="display: flex; gap: 40px;">
+      <div id="grafico_circular" style="width: 40%; height: 500px;"></div>
+      <div id="chart_div" style="width: 60%; height: 500px;"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
