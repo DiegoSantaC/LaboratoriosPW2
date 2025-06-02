@@ -6681,4 +6681,16 @@ h6 {
   font-size: 12px;
 }
 
+.spec_offer {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #181818;
+  color: #FFF !important;
+  padding: 5px 10px;
+  font-size: 14px;
+  z-index: 10;
+  border-radius: 4px;
+}
+
 /*# sourceMappingURL=style.css.map */
