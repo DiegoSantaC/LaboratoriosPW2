@@ -8,3 +8,6 @@ class Destination(models.Model):
     price = models.IntegerField()
     offert = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.name
+

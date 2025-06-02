@@ -203,18 +203,18 @@
             </div>
             <div class="row">
                 <!-- MIS DESTINOS  -->
-                {% for item in list %}
+                {% for item in dests %}
                 <div class="col-lg-4 col-md-6">
                     <div class="single_destination">
                         <div class="thumb">
-                            <img src="{{baseUrl}}/{{ item.img }}" alt="">
+                            <img src="{{ item.img.url }}" alt="">
                             {% if item.offert %}
                             <div class="spec_offer tex-center">Special Offer !</div>
                             {% endif %}
                         </div>
                         <div class="content">
-                            <p class="d-flex align-items-center">{{ item.name }}<a href="travel_destination.html"> ${{ item.price }} </a> </p>
-                            <p class="d-flex align-items-center">{{ item.desc }}</p>
+                            <p class="d-flex align-items-center">{{item.name}}<a href="travel_destination.html"> ${{item.price}} </a> </p>
+                            <p class="d-flex align-items-center">{{item.desc}}</p>
                         </div>
                     </div>
                 </div>
