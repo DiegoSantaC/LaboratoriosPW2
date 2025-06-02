@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'travello.apps.TravelloConfig',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,7 @@ WSGI_APPLICATION = 'ProyectoTelusko.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'telusko.db',
     }
 }
 
