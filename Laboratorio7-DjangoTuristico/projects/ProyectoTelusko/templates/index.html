@@ -57,13 +57,24 @@
                                         <ul id="navigation">
                                             <li><a class="active" href="index.html">home</a></li>
                                             <li><a href="about.html">About</a></li>
-                                            <li><a class="" href="travel_destination.html">Destination</a></l/li>
+                                            <li><a class="" href="travel_destination.html">Destination</a></li>
+                                            {% if user.is_authenticated %}
+                                            <li><a href="listar"> Admin <i class="ti-angle-down"></i></a>
+                                            {% else %}
                                             <li><a href="#"> Admin <i class="ti-angle-down"></i></a>
+                                            {% endif %}        
                                                 <ul class="submenu">
+                                                        {% if user.is_authenticated %}
+                                                        <li><a href="accounts/logout">Logout</a></li>
+                                                        {% else %}
                                                         <li><a href="accounts/register">Register</a></li>
-                                                        <li><a href="elements.html">Login</a></li>
+                                                        <li><a href="accounts/login">Login</a></li>
+                                                        {% endif %}
                                                 </ul>
                                             </li>
+                                            {% if user.is_authenticated %}
+                                            <l1>Hello!! {{ user.first_name }}
+                                            {% endif %}
                                         </ul>
                                     </nav>
                                 </div>

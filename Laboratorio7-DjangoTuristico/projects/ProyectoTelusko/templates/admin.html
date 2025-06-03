@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administracion</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        li {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 250px;
+            text-align: center;
+        }
+        img {
+            width: 100%;
+            border-radius: 6px;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2> Administracion de mis Destinos Turisticos </h2>
+    <h3><a href="{% url 'agregar' %}">Agregar un Destino</a></h3>
+    <ul>
+        {% for item in dests %}
+        <li>
+            {% if item.img %}
+                <img src="{{ item.img.url }}" alt="" height="200px">
+            {% else %}
+                <p>No hay imagen</p>
+            {% endif %}
+            <p>{{ item.name }}</p>
+            <p>${{ item.price }}</p>
+            <p>{{ item.desc }}</p>
+            {% if item.offert %}
+                <p>Special Offer!</p>
+            {% else %}
+                <p>No offer!</p>
+            {% endif %}
+            <a href="{% url 'eliminar' item.id %}">Eliminar Destino</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
