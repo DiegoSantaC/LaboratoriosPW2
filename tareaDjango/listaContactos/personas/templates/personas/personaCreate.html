@@ -1,0 +1,7 @@
+{% extends 'home.html' %}
+{% block content %}
+<form action="." method="post"> {% csrf_token %}  
+    <input type="text" name='q' placeholder="Buscar..."/>    
+    <input type="submit" value="Buscar"/>
+</form>
+{% endblock %}
