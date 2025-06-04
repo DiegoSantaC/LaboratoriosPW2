@@ -3,10 +3,10 @@ from .models import Persona
 
 class PersonaForm(forms.ModelForm):
     class Meta:
-        model: Persona
+        model = Persona
         fields = [
             'nombres',
-            'apellidos,',
+            'apellidos',
             'edad',
             'donador',
         ]
