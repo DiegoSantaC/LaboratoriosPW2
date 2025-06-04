@@ -18,6 +18,8 @@ def personaCreateView(request):
     context = {
         'form': form
     }
+    print('POST: ', request.POST)
+    print('GET: ',request.GET)
     return render(request, 'personas/personaCreate.html', context)
 
 def searchForHelp(request):
