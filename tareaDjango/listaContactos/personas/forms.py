@@ -8,4 +8,5 @@ class PersonaForm(forms.ModelForm):
             'nombres',
             'apellidos',
             'edad',
+            'donador',
         ]
