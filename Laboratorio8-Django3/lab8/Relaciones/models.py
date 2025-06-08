@@ -27,3 +27,16 @@ class FrameWork(models.Model):  # 1 Framework solo puede tener 1 lenguaje
 
     def __str__(self):
         return self.name 
+    
+class Movie(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+class Character(models.Model):
+    name = models.CharField(max_length=100)
+    movie = models.ManyToManyField(Movie)
+
+    def __str__(self):
+        return self.name
