@@ -24,3 +24,6 @@ class Lenguaje(models.Model):  # 1 Lenguaje puede tener varios Framework
 class FrameWork(models.Model):  # 1 Framework solo puede tener 1 lenguaje
     name= models.CharField(max_length=10)
     lenguaje = models.ForeignKey(Lenguaje, on_delete=models.CASCADE) 
+
+    def __str__(self):
+        return self.name 
