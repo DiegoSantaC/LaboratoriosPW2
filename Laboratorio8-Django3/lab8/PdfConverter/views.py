@@ -4,13 +4,23 @@ from datetime import date
 from . import renderers
 
 # Create your views here.
-def pdf_view(request, *args, **kwargs):
+def pdf_view(request):
     data = {
-        'today': date.today(), 
-        'amount': 39.99,
-        'customer_name': 'Cooper Mann',
-        'invoice_number': 1233434,
+        'today': date.today(),
+        'amount': 50.25,
+        'customer_name': 'Diego Santa Cruz',
+        'invoice_number': 322,
     }
-    return renderers.render_to_pdf('pdfs/invoice.html', data)
+
+    response = renderers.render_to_pdf('pdfs/invoice.html', data)
+
+    if not response:
+        raise Http404("No se pudo generar el PDF.")
+
+    filename = f"Invoice_{data['invoice_number']}.pdf"
+    disposition = "attachment" if request.GET.get("download") else "inline"
+    response["Content-Disposition"] = f"{disposition}; filename={filename}"
+
+    return response
 
 
