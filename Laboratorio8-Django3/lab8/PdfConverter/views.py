@@ -14,9 +14,11 @@ def pdf_view(request):
 
     response = renderers.render_to_pdf('pdfs/invoice.html', data)
 
+    #VERFICACION
     if not response:
         raise Http404("No se pudo generar el PDF.")
 
+    #DESCARGAS
     filename = f"Invoice_{data['invoice_number']}.pdf"
     disposition = "attachment" if request.GET.get("download") else "inline"
     response["Content-Disposition"] = f"{disposition}; filename={filename}"

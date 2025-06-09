@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Relaciones',
+    'PdfConverter',
+    'SendEmail',
 ]
 
 MIDDLEWARE = [
