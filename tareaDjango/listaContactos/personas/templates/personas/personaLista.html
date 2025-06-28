@@ -1,0 +1,9 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <lu>
+    {% for objeto in list %}
+        <h3><li>{{objeto.nombres}} {{objeto.apellidos}} , edad:{{objeto.edad}}</li></h3>
+    {% endfor %}
+    </lu>
+{% endblock %}
