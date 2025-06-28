@@ -32,3 +32,7 @@ class RawPersonaForm(forms.Form):
     apellidos = forms.CharField()
     edad = forms.IntegerField(initial=22)
     donador = forms.BooleanField()
+
+    def get_absolute_url(self):
+        return "/personas/"+ str(self.id) + "/"
+

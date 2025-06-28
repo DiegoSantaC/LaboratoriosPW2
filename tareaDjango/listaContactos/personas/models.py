@@ -7,5 +7,8 @@ class Persona(models.Model):
     edad = models.IntegerField()
     donador= models.BooleanField()
 
+    def get_absolute_url(self):
+        return "/personas/"+ str(self.id) + "/"
+
     def __str__(self):
         return f"{self.nombres} {self.apellidos} ,edad:{self.edad} ,es donador:{self.donador}"
