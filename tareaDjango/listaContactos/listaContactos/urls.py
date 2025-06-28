@@ -2,16 +2,17 @@
 from django.contrib import admin
 from django.urls import path
 from inicio.views import myHomeView,anotherView
-from personas.views import personaTestView, personaCreateView, searchForHelp, personaAnotherCreateView,PersonShowObject,PersonasListView
+from personas.views import personaTestView, personaCreateView, searchForHelp, personaAnotherCreateView,PersonShowObject,PersonasListView, PersonaDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', myHomeView, name="Mi pagina de inicio"),
-    path('persona/', personaTestView, name="otro"),
+    #path('persona/', personaTestView, name="otro"),
     path('another/', anotherView, name="otro"),
     path('agregar/', personaCreateView, name="createPersona"),
     path('search/', searchForHelp, name="search"),
     path('agregar2/', personaAnotherCreateView, name="agregar2"),
-    path('persona/<int:myID>/', PersonShowObject, name= 'buscar'),
-    path('personalist/', PersonasListView, name="listing"),
+    path('personas/<int:myID>/', PersonShowObject, name= 'buscar'),
+    path('personas/', PersonasListView, name="listing"),
+    path('personas/<int:myID>/delete', PersonaDeleteView, name= 'delete'),
 ]
