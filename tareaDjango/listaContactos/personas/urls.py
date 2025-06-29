@@ -8,8 +8,9 @@ from personas.views import (
     #PersonasListView, 
     PersonaDeleteView,
     PersonasViewList,
-    PersonaDetailView,
+    PersonaViewDetail,
     PersonaViewCreate,
+    PersonaViewUpdate,
     )
 
 app_name= 'personas'
@@ -19,6 +20,7 @@ urlpatterns = [
     path('add/', PersonaViewCreate.as_view(), name="persona-create"),
     path('add2/', personaAnotherCreateView, name="add2"),
     path('search/', searchForHelp, name="searchHelp"),
-    path('<int:pk>/', PersonaDetailView.as_view(), name= 'persona-detail'),
+    path('<int:pk>/', PersonaViewDetail.as_view(), name= 'persona-detail'),
+    path('<int:pk>/update/', PersonaViewUpdate.as_view(), name= 'persona-update'),
     path('<int:myID>/delete/', PersonaDeleteView, name= 'delete'),
 ]

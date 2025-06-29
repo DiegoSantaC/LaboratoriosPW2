@@ -5,6 +5,7 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
+    UpdateView,
     )
 
 # Create your views here.
@@ -79,10 +80,19 @@ def PersonaDeleteView(request, myID):
 class PersonasViewList(ListView):
     model = Persona
 
-class PersonaDetailView(DetailView):
+class PersonaViewDetail(DetailView):
     model = Persona
 
 class PersonaViewCreate(CreateView):
+    model = Persona
+    fields = [
+        'nombres',
+        'apellidos',
+        'edad',
+        'donador',
+    ]
+
+class PersonaViewUpdate(UpdateView):
     model = Persona
     fields = [
         'nombres',
