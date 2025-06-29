@@ -1,0 +1,9 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <h2> CREAR UNA PERSONA CON VISTA GENERICA</h2>
+        <form method="post"> {% csrf_token %}
+            {{ form.as_p }}  
+            <input type="submit" value="Crear"/>
+        </form>
+{% endblock %}
