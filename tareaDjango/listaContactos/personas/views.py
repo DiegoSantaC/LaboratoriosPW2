@@ -76,3 +76,4 @@ def PersonaDeleteView(request, myID):
 #USANDO VISTAS GENERICAS
 class PersonasViewList(ListView):
     model = Persona
+    queryset = Persona.objects.filter(edad__lte='30')
