@@ -1,0 +1,10 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <h2> BORRANDO UNA PERSONA CON VISTA GENERICA</h2>
+    <h3> {{object.apellidos}} / {{object.nombres}} </h3>  
+        <form method="post"> {% csrf_token %}
+            <p> Confirme que desea borrar esta persona </p>
+            <input type="submit" value="Confirmar">
+        </form>
+{% endblock %}
