@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <h2> LISTA DE PERSONAS CON VISTA GENERICA</h2>
+    {% for instance in object_list %}
+        <p>
+            {{ instance.id }} --
+            <a href='{{ objeto.get_absolute_url }}'>
+                {{instance.nombres}} {{instance.apellidos}} , edad:{{instance.edad}}
+            </a>
+        </p>    
+    {% endfor %}
+{% endblock %}

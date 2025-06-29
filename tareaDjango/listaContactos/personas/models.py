@@ -9,7 +9,7 @@ class Persona(models.Model):
     donador= models.BooleanField()
 
     def get_absolute_url(self):
-        return reverse('personas:buscar', kwargs={'myID': self.id})
+        return reverse('personas:search', kwargs={'myID': self.id})
 
     def __str__(self):
         return f"{self.nombres} {self.apellidos} ,edad:{self.edad} ,es donador:{self.donador}"

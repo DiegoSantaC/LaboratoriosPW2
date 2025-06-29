@@ -5,17 +5,18 @@ from personas.views import (
     searchForHelp, 
     personaAnotherCreateView,
     PersonShowObject,
-    PersonasListView, 
+    #PersonasListView, 
     PersonaDeleteView,
+    PersonasViewList,
     )
 
 app_name= 'personas'
 urlpatterns = [
     #path('persona/', personaTestView, name="otro"),
-    path('', PersonasListView, name="listing"),
-    path('agregar/', personaCreateView, name="create"),
-    path('agregar2/', personaAnotherCreateView, name="agregar2"),
-    path('search/', searchForHelp, name="search"),
-    path('<int:myID>/', PersonShowObject, name= 'buscar'),
+    path('', PersonasViewList.as_view(), name="listing"),
+    path('add/', personaCreateView, name="add"),
+    path('add2/', personaAnotherCreateView, name="add2"),
+    path('search/', searchForHelp, name="searchHelp"),
+    path('<int:myID>/', PersonShowObject, name= 'search'),
     path('<int:myID>/delete/', PersonaDeleteView, name= 'delete'),
 ]

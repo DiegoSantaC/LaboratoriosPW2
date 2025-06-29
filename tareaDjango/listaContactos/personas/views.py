@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Persona
 from .forms import PersonaForm, RawPersonaForm
+from django.views.generic.list import (
+    ListView,
+    )
 
 # Create your views here.
 def personaTestView(request):
@@ -68,3 +71,8 @@ def PersonaDeleteView(request, myID):
         'objeto': obj,
     }
     return render(request, 'personas/personaDelete.html', context)
+
+
+#USANDO VISTAS GENERICAS
+class PersonasViewList(ListView):
+    model = Persona
