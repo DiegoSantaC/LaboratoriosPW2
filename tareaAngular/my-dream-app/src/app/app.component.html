@@ -20,6 +20,7 @@
       <ul>
         <li *ngFor="let user of users">
           <app-user [nameUser]="user"></app-user>
+          <button (click)="deleteuser(user)">Borrar Usuario</button>
         </li>
       </ul>
       <button (click)="sayhello()">Hazme Click</button>

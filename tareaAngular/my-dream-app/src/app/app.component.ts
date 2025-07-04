@@ -42,4 +42,12 @@ export class AppComponent {
   sayhello(){
     alert("Hola desde app.component");
   }
+
+  deleteuser(user:any){
+    for(let i=0; i<this.users.length; i++){
+      if(user==this.users[i]){
+        this.users.splice(i,1);
+      }
+    }
+  }
 }
