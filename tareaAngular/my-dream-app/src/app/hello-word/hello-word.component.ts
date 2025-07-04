@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-hello-word',
@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './hello-word.component.html',
   styleUrl: './hello-word.component.css'
 })
-export class HelloWordComponent {
+export class HelloWordComponent implements OnInit{
+
+  constructor(){
+  }
+
+  ngOnInit(): void {
+  }
 
 }
