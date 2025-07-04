@@ -6,3 +6,15 @@
     background-color: white;
     color: rgb(255, 0, 0);
 }
+.component2 {
+    background-color: #555;
+    color: red;
+    padding: 20px;
+}
+.btn {
+    padding: 20px;
+    color: white;
+    background-color: brown;
+    display: block;
+    margin: 3px;
+}
