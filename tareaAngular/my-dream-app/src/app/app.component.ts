@@ -50,4 +50,11 @@ export class AppComponent {
       }
     }
   }
+
+  adduser(newUser:any){
+    this.users.push(newUser.value);
+    newUser.value='';
+    newUser.focus();
+    return false;
+  }
 }

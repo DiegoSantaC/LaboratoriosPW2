@@ -17,6 +17,10 @@
   </div>
   <div *ngIf="showhobbies" class="component3">
       <h3>Users:</h3>
+      <form (submit)="adduser(newUser)">
+        <input #newUser type="text">
+        <button>Agregar Usuario</button>
+      </form>
       <ul>
         <li *ngFor="let user of users">
           <app-user [nameUser]="user"></app-user>
