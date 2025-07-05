@@ -26,6 +26,7 @@ export class AppComponent {
   hobbies : string[];
   showhobbies : boolean;
   users = ["Diego", "Luci", "Ale"];
+  posts :any[] = [];
 
   constructor(private dataService: DataService){
     console.log("Constructor trabajando...");
@@ -36,7 +37,7 @@ export class AppComponent {
     this.hobbies = ["Videojuegos","Basquet","Programacion","Lectura"];
     this.showhobbies = false;
     this.dataService.getData().subscribe(data=>{
-      console.log(data);
+      this.posts = data;
     })
   }
 
