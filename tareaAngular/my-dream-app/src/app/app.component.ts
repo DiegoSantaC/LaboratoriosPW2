@@ -27,9 +27,8 @@ export class AppComponent {
   hobbies : string[];
   showhobbies : boolean;
   users = ["Diego", "Luci", "Ale"];
-  posts :any[] = [];
 
-  constructor(private dataService: DataService){
+  constructor(){
     console.log("Constructor trabajando...");
     this.email = 'dsantacruzv@unsa.edu.pe';
     this.name = 'Diego Santa Cruz Villa';
@@ -37,9 +36,6 @@ export class AppComponent {
     this.webpage = "http://www.unsa.edu.pe";
     this.hobbies = ["Videojuegos","Basquet","Programacion","Lectura"];
     this.showhobbies = false;
-    this.dataService.getData().subscribe(data=>{
-      this.posts = data;
-    })
   }
 
   toggleHobbies(){

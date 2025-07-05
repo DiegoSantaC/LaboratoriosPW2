@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './hello-word.component.css'
 })
 export class HelloWordComponent implements OnInit{
+  title="HelloWord";
 
   constructor(){
   }
