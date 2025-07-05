@@ -4,13 +4,16 @@ import { CommonModule } from '@angular/common';
 import { HelloWordComponent } from './hello-word/hello-word.component';
 import { UserComponent } from './user/user.component';
 import { FormsModule } from '@angular/forms';
+import { DataService } from './data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,CommonModule,FormsModule,
-    HelloWordComponent,UserComponent],
+    HelloWordComponent,UserComponent,HttpClientModule],
+  providers: [DataService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -24,7 +27,7 @@ export class AppComponent {
   showhobbies : boolean;
   users = ["Diego", "Luci", "Ale"];
 
-  constructor(){
+  constructor(private dataService: DataService){
     console.log("Constructor trabajando...");
     this.email = 'dsantacruzv@unsa.edu.pe';
     this.name = 'Diego Santa Cruz Villa';
@@ -32,6 +35,9 @@ export class AppComponent {
     this.webpage = "http://www.unsa.edu.pe";
     this.hobbies = ["Videojuegos","Basquet","Programacion","Lectura"];
     this.showhobbies = false;
+    this.dataService.getData().subscribe(data=>{
+      console.log(data);
+    })
   }
 
   toggleHobbies(){
