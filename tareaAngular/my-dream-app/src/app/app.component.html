@@ -5,9 +5,14 @@
   <h1> {{ title }} </h1>
 </div>
 <div class="ash">
-  <h2> {{ name }} </h2>
   <h2> {{ email }} </h2>
   <h2> {{ webpage }} </h2>
+  <form>
+    <input type="text" name="name" [(ngModel)]="name">
+    <input type="text" name="age" [(ngModel)]="age">
+  </form>
+  <h2> Name: {{ name }}</h2>
+  <h2> Age: {{ age }}</h2>
   <button (click)="toggleHobbies()" class="btn"> Mostrar Hobbies </button>
   <div *ngIf="showhobbies" class="component2">
       <h3>Hobbies:</h3>

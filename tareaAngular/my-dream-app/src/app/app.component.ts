@@ -3,17 +3,21 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HelloWordComponent } from './hello-word/hello-word.component';
 import { UserComponent } from './user/user.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,HelloWordComponent,UserComponent],
+  imports: [
+    RouterOutlet,CommonModule,FormsModule,
+    HelloWordComponent,UserComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'my-dream-app';
   name : string;
+  age : number;
+  title = 'my-dream-app';
   email;
   webpage : string;
   hobbies : string[];
@@ -22,8 +26,9 @@ export class AppComponent {
 
   constructor(){
     console.log("Constructor trabajando...");
-    this.name = 'Diego Santa Cruz Villa';
     this.email = 'dsantacruzv@unsa.edu.pe';
+    this.name = 'Diego Santa Cruz Villa';
+    this.age = 19;
     this.webpage = "http://www.unsa.edu.pe";
     this.hobbies = ["Videojuegos","Basquet","Programacion","Lectura"];
     this.showhobbies = false;
