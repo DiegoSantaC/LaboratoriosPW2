@@ -1,0 +1,16 @@
+<div class="black">
+    <h1> {{ title }} </h1>  
+</div>
+
+<div *ngFor="let video of videoList" class="video-card">
+  <h3>{{ video.name }}</h3>
+
+  <iframe
+    width="560"
+    height="315"
+    [src]="getEmbedUrl(video.url)"
+    name="{{ video.name }}"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
