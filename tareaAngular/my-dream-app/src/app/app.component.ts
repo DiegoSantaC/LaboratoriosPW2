@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common';
 import { HelloWordComponent } from './hello-word/hello-word.component';
 import { UserComponent } from './user/user.component';
@@ -11,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,CommonModule,FormsModule,
+    RouterOutlet,CommonModule,FormsModule, RouterModule,
     HelloWordComponent,UserComponent,HttpClientModule],
   providers: [DataService],
   templateUrl: './app.component.html',
