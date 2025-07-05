@@ -4,6 +4,7 @@
 
 <div *ngFor="let video of videoList" class="video-card">
   <h3>{{ video.name }}</h3>
+  <h2> Slug Generado: {{ video.name | slug }} </h2>
 
   <iframe
     width="560"

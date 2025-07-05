@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { SlugPipe } from '../slug.pipe';
 
 @Component({
   selector: 'app-peliculas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SlugPipe],
   templateUrl: './peliculas.component.html',
   styleUrl: './peliculas.component.css'
 })
