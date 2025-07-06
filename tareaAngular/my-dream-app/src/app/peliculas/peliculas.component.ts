@@ -59,4 +59,15 @@ export class PeliculasComponent {
     const id = this.getYouTubeId(videoUrl);
     return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${id}`);
   }
+
+  addPeli(namePeli:any, urlPeli:any){
+    this.names.push(namePeli.value);
+    this.urls.push(urlPeli.value)
+    namePeli.value='';
+    namePeli.focus();
+    urlPeli.value='';
+    urlPeli.focus();
+    this.generateVideoList();
+    return false;
+  }
 }
