@@ -10,8 +10,8 @@
 
 <div *ngFor="let video of videoList" class="video-card">
   <h3>{{ video.name }}</h3>
+  <button (click)="deletePeli(video.name)">Borrar Pelicula</button>  
   <h2> Slug Generado: {{ video.name | slug }} </h2>
-
   <iframe
     width="560"
     height="315"
@@ -20,4 +20,5 @@
     frameborder="0"
     allowfullscreen>
   </iframe>
+
 </div>

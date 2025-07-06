@@ -70,4 +70,10 @@ export class PeliculasComponent {
     this.generateVideoList();
     return false;
   }
+
+  deletePeli(video:any){
+    for(let i=0; i<this.videoList.length; i++)
+      if(video==this.videoList[i].name)
+        this.videoList.splice(i,1);
+  }
 }
