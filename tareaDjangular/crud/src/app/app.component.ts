@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ApiService } from './api.service';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -15,10 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 export class AppComponent {
   title = 'crud';
-  movies = [{id:1,title:'peli1',year:2021},{id:2,title:'peli2',year:2022}];
+  movies = [{id:1,title:'peli1',desc:'descripcion',year:2021}];
+
   constructor(private api:ApiService) {
     this.getMovies();
   }
+
   getMovies = () => {
     this.api.getAllMovies().subscribe (
       data => {
