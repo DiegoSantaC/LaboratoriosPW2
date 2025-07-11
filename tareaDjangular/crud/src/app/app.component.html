@@ -1,13 +1,42 @@
+<div *ngIf="cargando" class="text-center mt-5">
+  <p class="text-muted">Cargando películas...</p>
+</div>
 
-<!--Mi lista aqui va -->
-  <h2>Lista de Movies:</h2>
-  <ul>
-    <li *ngFor="let movie of movies">
-      <h2> {{movie.id }}: Titulo: {{ movie.title }} <br>
-      Descripcion: {{ movie.desc}} <br>
-      Año: {{ movie.year }}</h2>
-    </li>
-  </ul>
+<div class="tv-container" *ngIf="!cargando">
+  <img src="assets/colecovision.png" class="tv-overlay" />
 
+  <!--
+  <form class="row g-2 mt-2" (submit)="addPeli(namePeli, urlPeli)">
+    <div class="col-md-4">
+      <input class="form-control" #namePeli type="text" placeholder="Nombre de la Película">
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" #urlPeli type="url" placeholder="Insertar Trailer de Youtube">
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-success w-100">Agregar Película</button>
+    </div>
+  </form>
+  -->
+
+  <div class="peliculas-list d-flex flex-column gap-3">
+    <div class="activate1" (click)="seleccionarVideo(getMovie(index-1))">
+       <img [src]="getMovie(index-1).logo" class="pelicula-logo">
+    </div>
+    <div class="activate2" (click)="seleccionarVideo(getMovie(index))">
+      <img [src]="getMovie(index).logo" class="pelicula-logo">
+    </div>
+    <div class="activate3" (click)="seleccionarVideo(getMovie(index+1))">
+       <img [src]="getMovie(index+1).logo" class="pelicula-logo">
+    </div>
+  </div>
+
+  <iframe class="tv-screen"
+      *ngIf="videoSeleccionado"
+      [src]="getEmbedUrl(videoSeleccionado)"
+      frameborder="0"
+      allowfullscreen>
+  </iframe>
+</div>
 
 <router-outlet />
